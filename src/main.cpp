@@ -194,9 +194,9 @@ namespace Testing_1{
 
     int list_size = the_list.size(); // Unknow list
     if (searches <= 0 || list_size < 0) {
-        cout << " Exiting test: " << endl
-            << " The number of searches must be positive." << endl
-            << " The number of list entries must exceed 0." << endl;
+        std::cout << " Exiting test: " << std::endl
+            << " The number of searches must be positive." << std::endl
+            << " The number of list entries must exceed 0." << std::endl;
         return;
     }
     int i, target, found_at;
@@ -207,9 +207,8 @@ namespace Testing_1{
     // sequential_search:
     for (i = 0; i < searches; i++) {
         target = 2 * number.random_integer(0, list_size - 1) + 1; // 0 -> 18 + 1 = 1 -> 19, un increasing list
-        std::cout << target << " ";
         if (Searching::sequential_search(the_list, target, found_at) == not_present) // 
-            cout << "Error: Failed to find expected target " << target << endl; // 
+            std::cout << "Error: Failed to find expected target " << target << std::endl; // 
     }
     
     print_out("Successful", clock.elapsed_time(), Key::comparisons, searches);
@@ -219,8 +218,8 @@ namespace Testing_1{
     for (i = 0; i < searches; i++) {
         target = 2 * number.random_integer(0, list_size); // 0 -> 20 <= 0 -> 10
         if (Searching::sequential_search(the_list, target, found_at) == success)
-            cout << "Error: Found unexpected target " << target
-                << " at " << found_at << endl;
+            std::cout << "Error: Found unexpected target " << target
+                << " at " << found_at << std::endl;
     }
     print_out("Unsuccessful", clock.elapsed_time(), Key::comparisons, searches);
     }
@@ -239,9 +238,9 @@ namespace Testing_2{
     {
         int list_size = the_list.size(); // Unknow list
         if (searches <= 0 || list_size < 0) {
-            cout << " Exiting test: " << endl
-                << " The number of searches must be positive." << endl
-                << " The number of list entries must exceed 0." << endl;
+            std::cout << " Exiting test: " << std::endl
+                << " The number of searches must be positive." << std::endl
+                << " The number of list entries must exceed 0." << std::endl;
             return;
         }
         int i, target_odd[searches], target_even[searches], found_at;
@@ -263,7 +262,7 @@ namespace Testing_2{
         std::cout << "sequential_search:" << std::endl << "------------------" << std::endl;
         for (i = 0; i < searches; i++) {
             if (Searching::sequential_search(the_list, target_odd[i], found_at) == not_present) // 
-                cout << "Error: Failed to find expected target " << target_odd[i] << endl; // 
+                std::cout << "Error: Failed to find expected target " << target_odd[i] << std::endl; // 
         }
         
         print_out("Successful", clock.elapsed_time(), Key::comparisons, searches);
@@ -272,8 +271,8 @@ namespace Testing_2{
         clock.reset();
         for (i = 0; i < searches; i++) {
             if (Searching::sequential_search(the_list, target_even[i], found_at) == success)
-                cout << "Error: Found unexpected target " << target_even[i]
-                    << " at " << found_at << endl;
+                std::cout << "Error: Found unexpected target " << target_even[i]
+                    << " at " << found_at << std::endl;
         }
         print_out("Unsuccessful", clock.elapsed_time(), Key::comparisons, searches);
         
@@ -283,7 +282,7 @@ namespace Testing_2{
          std::cout << "run_recursive_binary_1:" << std::endl << "-----------------------" << std::endl;
         for (i = 0; i < searches; i++) {
             if (Searching::run_recursive_binary_1(the_list, target_odd[i], found_at) == not_present) // 
-                cout << "Error: Failed to find expected target " << target_odd[i] << endl; // 
+                std::cout << "Error: Failed to find expected target " << target_odd[i] << std::endl; // 
         }
         
         print_out("Successful", clock.elapsed_time(), Key::comparisons, searches);
@@ -292,8 +291,8 @@ namespace Testing_2{
         clock.reset();
         for (i = 0; i < searches; i++) {
             if (Searching::run_recursive_binary_1(the_list, target_even[i], found_at) == success)
-                cout << "Error: Found unexpected target " << target_even[i]
-                    << " at " << found_at << endl;
+                std::cout << "Error: Found unexpected target " << target_even[i]
+                    << " at " << found_at << std::endl;
         }
         print_out("Unsuccessful", clock.elapsed_time(), Key::comparisons, searches);
 
@@ -303,7 +302,7 @@ namespace Testing_2{
          std::cout << "binary_search_1:" << std::endl << "----------------" << std::endl;
         for (i = 0; i < searches; i++) {
             if (Searching::binary_search_1(the_list, target_odd[i], found_at) == not_present) // 
-                cout << "Error: Failed to find expected target " << target_odd[i] << endl; // 
+                std::cout << "Error: Failed to find expected target " << target_odd[i] << std::endl; // 
         }
         
         print_out("Successful", clock.elapsed_time(), Key::comparisons, searches);
@@ -312,8 +311,8 @@ namespace Testing_2{
         clock.reset();
         for (i = 0; i < searches; i++) {
             if (Searching::binary_search_1(the_list, target_even[i], found_at) == success)
-                cout << "Error: Found unexpected target " << target_even[i]
-                    << " at " << found_at << endl;
+                std::cout << "Error: Found unexpected target " << target_even[i]
+                    << " at " << found_at << std::endl;
         }
         print_out("Unsuccessful", clock.elapsed_time(), Key::comparisons, searches);
 
@@ -323,7 +322,7 @@ namespace Testing_2{
          std::cout << "run_recursive_binary_2:" << std::endl << "-----------------------" << std::endl;
         for (i = 0; i < searches; i++) {
             if (Searching::run_recursive_binary_2(the_list, target_odd[i], found_at) == not_present) // 
-                cout << "Error: Failed to find expected target " << target_odd[i] << endl; // 
+                std::cout << "Error: Failed to find expected target " << target_odd[i] << std::endl; // 
         }
         
         print_out("Successful", clock.elapsed_time(), Key::comparisons, searches);
@@ -332,8 +331,8 @@ namespace Testing_2{
         clock.reset();
         for (i = 0; i < searches; i++) {
             if (Searching::run_recursive_binary_2(the_list, target_even[i], found_at) == success)
-                cout << "Error: Found unexpected target " << target_even[i]
-                    << " at " << found_at << endl;
+                std::cout << "Error: Found unexpected target " << target_even[i]
+                    << " at " << found_at << std::endl;
         }
         print_out("Unsuccessful", clock.elapsed_time(), Key::comparisons, searches);
         
@@ -343,7 +342,7 @@ namespace Testing_2{
          std::cout << "binary_search_2:" << std::endl << "----------------" << std::endl;
         for (i = 0; i < searches; i++) {
             if (Searching::binary_search_2(the_list, target_odd[i], found_at) == not_present) // 
-                cout << "Error: Failed to find expected target " << target_odd[i] << endl; // 
+                std::cout << "Error: Failed to find expected target " << target_odd[i] << std::endl; // 
         }
         
         print_out("Successful", clock.elapsed_time(), Key::comparisons, searches);
@@ -352,8 +351,8 @@ namespace Testing_2{
         clock.reset();
         for (i = 0; i < searches; i++) {
             if (Searching::binary_search_2(the_list, target_even[i], found_at) == success)
-                cout << "Error: Found unexpected target " << target_even[i]
-                    << " at " << found_at << endl;
+                std::cout << "Error: Found unexpected target " << target_even[i]
+                    << " at " << found_at << std::endl;
         }
         print_out("Unsuccessful", clock.elapsed_time(), Key::comparisons, searches);
     }
@@ -403,7 +402,10 @@ void Program :: main_2()
     Testing_2::test_search(s, TestList);
 }
 
-void Program :: main_3(){}
+void Program :: main_3()
+{
+    
+}
 void Program :: main_4(){}
 void Program :: main_5(){}
 

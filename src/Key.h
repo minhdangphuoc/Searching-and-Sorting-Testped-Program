@@ -53,7 +53,10 @@ bool operator <=(const Key &x,const Key &y){
    Key::comparisons++; // Increase compare value
    return x.the_key() <= y.the_key();
 }
-bool operator !=(const Key &x,const Key &y);
+bool operator !=(const Key &x,const Key &y){
+   Key::comparisons++; // Increase compare value
+   return x.the_key() != y.the_key();
+}
 ostream& operator << (ostream& os, const Key& k);
 
 #endif // !1
