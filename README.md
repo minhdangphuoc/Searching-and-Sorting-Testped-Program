@@ -1,5 +1,5 @@
 # Searching-and-Sorting-Testped-Program
-- This is a repository for airport simulation using Queues data structure.
+- This is a repository for Searching and Sorting Testped Program spesification.
 - The source code was made for 5G00DM61-3003 Programming Languages 3.
 
 ## Concept
