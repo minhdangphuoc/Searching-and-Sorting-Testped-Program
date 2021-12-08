@@ -148,14 +148,15 @@ int main()
 {
     List<Key> TestList;
     Key * key;
-    Random num;
+    // Random num;
     int in = 0, pos = 0;
     int max_num = 0;
     std::cout << "Input size: ";
     std::cin >> in;
     max_num = in;
     for (int i = 0; i < in; i++){
-        key = new Key(2 * num.random_integer(0, 9) + 1); // 1 -> 19
+        // key = new Key(2 * num.random_integer(0, 9) + 1); // 1 -> 19
+        key = new Key(2 * i + 1); // 1 -> 19
         TestList.insert(i, *key);
         delete key;
     }
