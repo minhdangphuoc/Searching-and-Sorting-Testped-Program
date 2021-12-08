@@ -3,7 +3,6 @@
 
 #include <iostream>
 using namespace std;
-
 class Key {
    int key;
 public:
@@ -38,13 +37,22 @@ bool operator ==(const Key &x,const Key &y){
    return x.the_key() == y.the_key();
 }
 
-bool operator >(const Key &x,const Key &y);
+bool operator >(const Key &x,const Key &y){
+    Key::comparisons++; // Increase compare value
+   return x.the_key() > y.the_key();
+}
 bool operator <(const Key &x,const Key &y){
    Key::comparisons++; // Increase compare value
    return x.the_key() < y.the_key();
 }
-bool operator >=(const Key &x,const Key &y);
-bool operator <=(const Key &x,const Key &y);
+bool operator >=(const Key &x,const Key &y){
+   Key::comparisons++; // Increase compare value
+   return x.the_key() >= y.the_key();
+}
+bool operator <=(const Key &x,const Key &y){
+   Key::comparisons++; // Increase compare value
+   return x.the_key() <= y.the_key();
+}
 bool operator !=(const Key &x,const Key &y);
 ostream& operator << (ostream& os, const Key& k);
 

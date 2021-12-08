@@ -2,7 +2,7 @@
 
 #include "Utility.h"
 
-const int max_list = 10000;
+const int max_list = 100000;
 //const int max_list = 15;
 
 template <class List_entry>
