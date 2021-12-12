@@ -10,8 +10,6 @@ namespace Program
    void main_1();
    void main_2();
    void main_3();
-   void main_4();
-   void main_5();
 }
 
 char options()
@@ -199,6 +197,7 @@ namespace Testing_1{
             << " The number of list entries must exceed 0." << std::endl;
         return;
     }
+    
     int i, target, found_at;
     Key::comparisons = 0;
     Random number; // Check this
@@ -243,10 +242,12 @@ namespace Testing_2{
                 << " The number of list entries must exceed 0." << std::endl;
             return;
         }
-        int i, target_odd[searches], target_even[searches], found_at;
-        Key::comparisons = 0;
+        int i, found_at;
         Random number; // Check this
+        Key::comparisons = 0;
         Timer clock; 
+        int target_odd [searches];
+        int target_even [searches];
 
         for (i = 0; i < searches; i++)
         {
@@ -265,6 +266,7 @@ namespace Testing_2{
                 std::cout << "Error: Failed to find expected target " << target_odd[i] << std::endl; // 
         }
         
+
         print_out("Successful", clock.elapsed_time(), Key::comparisons, searches);
 
         Key::comparisons = 0;
@@ -406,8 +408,6 @@ void Program :: main_3()
 {
     
 }
-void Program :: main_4(){}
-void Program :: main_5(){}
 
 int main() {
     switch(options())
@@ -420,12 +420,6 @@ int main() {
             break;
         case '3':
             Program::main_3();
-            break;
-        case '4':
-            Program::main_4();
-            break;
-        case '5':
-            Program::main_5();
             break;
         default:
             std::cout << "Wrong input, exit program." << std::endl;
