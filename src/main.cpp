@@ -416,6 +416,7 @@ void Program :: main_1()
         delete key;
     }
     Testing_1::test_search(s, TestList);
+    enter_break();
 }
 
 void Program :: main_2()
@@ -441,6 +442,7 @@ void Program :: main_2()
         delete key;
     }
     Testing_2::test_search(s, TestList);
+    enter_break();
 }
 
 void Program :: main_3()
@@ -474,6 +476,7 @@ void Program :: main_3()
 }
 
 int main() {
+    if (system("CLS")) system("clear");
     switch(options())
     {
         case '1':
