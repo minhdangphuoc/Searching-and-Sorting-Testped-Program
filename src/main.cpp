@@ -1,9 +1,40 @@
 #include <iostream>
-
 #include "Utility.h"
-#include "Order_list.h"
 #include "RANDOM.H"
 #include "TIMER.H"
+#include "Sort.h"
+
+
+void print_out(std::string, const double &, const int &, const int &);
+
+void enter_break()
+{
+    char opt;
+    while (opt != '\n')
+    {
+        std::cout << "Press enter to continue. " << std::flush;
+        opt = std::getchar();
+    }
+}
+
+void print_list(const Sortable_list & list)
+{
+    Record temp;
+    std::cout << std::endl;
+    for (int i = 0; i < 200; i++)
+    {
+            list.retrieve(i, temp);
+            std :: cout << temp.the_key() << " ";
+    }
+    std :: cout << "... ";
+    for (int i = list.size() - 201; i < list.size() - 1; i++)
+    {
+            list.retrieve(i, temp);
+            std :: cout << temp.the_key() << " ";
+    }
+    std::cout << std::endl;
+    
+}
 
 namespace Program
 {
@@ -14,10 +45,10 @@ namespace Program
 
 char options()
 {
-   char opt = NULL;
+   char opt;
    while (opt == NULL || opt == '\n')
    {
-      std::cout << "1.Run Group 1\n2.Run Group 2\n3.Run Group 3\n4.Run Group 4\n5.Run Group 5\n6.Quit the program\nYour choice: " << std::flush;
+      std::cout << "1.Run Group 1\n2.Run Group 2\n3.Run Group 3\n4.Quit the program\nYour choice: " << std::flush;
       opt = std::getchar();
    }
 
@@ -175,7 +206,9 @@ namespace Searching{
     }
 }
 
-void print_out(std::string, const double &, const int &, const int &);
+namespace Sorting{
+
+}
 
 namespace Testing_1{
     void test_search(int searches // What are looking for
@@ -365,18 +398,24 @@ void Program :: main_1()
     List<Record> TestList;
     Key * key;
     // Random num;
-    int in = 0, pos = 0;
+    int in = 0, s;
     int max_num = 0;
-    std::cout << "Input size: ";
+    std::cout << "Input maximum, size: ";
     std::cin >> in;
     max_num = in;
-    for (int i = 0; i < in; i++){
+
+    std::cout << "Input searches: ";
+    std::cin >> in;
+    s = in;
+    
+    max_num = in;
+    for (int i = 0; i < max_num; i++){
         // key = new Key(2 * num.random_integer(0, 9) + 1); // 1 -> 19
         key = new Key(2 * i + 1); // 1 -> 19
         TestList.insert(i, *key);
         delete key;
     }
-    Testing_1::test_search(in, TestList);
+    Testing_1::test_search(s, TestList);
 }
 
 void Program :: main_2()
@@ -384,14 +423,14 @@ void Program :: main_2()
     Ordered_list TestList;
     Key * key;
     // Random num;
-    int in = 0, pos = 0, s;
+    int in = 0, s;
     int max_num = 0;
     
-    std::cout << "Input size: ";
+    std::cout << "Input maximum, size: ";
     std::cin >> in;
     max_num = in;
 
-    std::cout << "Input size: ";
+    std::cout << "Input searches: ";
     std::cin >> in;
     s = in;
     
@@ -406,7 +445,32 @@ void Program :: main_2()
 
 void Program :: main_3()
 {
-    
+    Sortable_list SortList;
+    Record * record;
+    Random num;
+    int in = 0, size = 0;
+    int max_num = 0;
+    std::cout << "Input maximum: ";
+    std::cin >> in;
+    max_num = in;
+
+    std::cout << "Input size of values: ";
+    std::cin >> in;
+    size = in;
+
+    // Generate a list of random numbers 
+    for (int i = 0; i < size; i++){
+        // key = new Key(2 * num.random_integer(0, 9) + 1); // 1 -> 19
+        record = new Record(num.random_integer(0, max_num)); // 1 -> 19
+        SortList.insert(i, *record);
+        delete record;
+    }
+    std::cout << "Before Sorting: " << std::endl;
+    print_list(SortList);
+    SortList.insertion_sort();
+    std::cout << "After Sorting: " << std::endl;
+    print_list(SortList);
+    enter_break();
 }
 
 int main() {
@@ -422,8 +486,9 @@ int main() {
             Program::main_3();
             break;
         default:
-            std::cout << "Wrong input, exit program." << std::endl;
+            std::cout << "Wrong input.";
     }
+    main();
 }
 
 void print_out(std::string msg, const double & time, const int & comparisons, const int & searches)

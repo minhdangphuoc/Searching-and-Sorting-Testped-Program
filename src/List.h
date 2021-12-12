@@ -1,3 +1,5 @@
+#ifndef _List_H_
+#define _LIST_H_
 #pragma once
 
 #include "Utility.h"
@@ -97,3 +99,5 @@ bool List<List_entry>::full() const
 {
 	return this->count == max_list;
 }
+
+#endif // !1
