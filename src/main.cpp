@@ -462,6 +462,9 @@ int main() {
         case '3':
             Program::main_3();
             break;
+        case '4':
+            exit(0);
+            break;
         default:
             std::cout << "Wrong input.\n";
     }
