@@ -7,15 +7,6 @@
 
 void print_out(std::string, const double &, const int &, const int &);
 
-void enter_break()
-{
-    char opt;
-    while (opt != '\n')
-    {
-        std::cout << "Press enter to continue. " << std::flush;
-        opt = std::getchar();
-    }
-}
 
 void print_list(const Sortable_list & list)
 {
@@ -26,13 +17,7 @@ void print_list(const Sortable_list & list)
             list.retrieve(i, temp);
             std :: cout << temp.the_key() << " ";
     }
-    std :: cout << "... ";
-    for (int i = list.size() - 201; i < list.size() - 1; i++)
-    {
-            list.retrieve(i, temp);
-            std :: cout << temp.the_key() << " ";
-    }
-    std::cout << std::endl;
+    std :: cout << "..." << std :: endl;
     
 }
 
@@ -45,15 +30,10 @@ namespace Program
 
 char options()
 {
-   char opt;
-   while (opt == NULL || opt == '\n')
-   {
-      std::cout << "1.Run Group 1\n2.Run Group 2\n3.Run Group 3\n4.Quit the program\nYour choice: " << std::flush;
-      opt = std::getchar();
-   }
-
-   if(system("CLS")) system("clear");
-   return opt;
+    char opt;
+    std::cout << "1.Run Group 1\n2.Run Group 2\n3.Run Group 3\n4.Quit the program\nYour choice: ";
+    std::cin >> opt;
+    return opt;
 }
 
 
@@ -204,10 +184,6 @@ namespace Searching{
     }
     return not_present;
     }
-}
-
-namespace Sorting{
-
 }
 
 namespace Testing_1{
@@ -416,7 +392,6 @@ void Program :: main_1()
         delete key;
     }
     Testing_1::test_search(s, TestList);
-    enter_break();
 }
 
 void Program :: main_2()
@@ -442,13 +417,13 @@ void Program :: main_2()
         delete key;
     }
     Testing_2::test_search(s, TestList);
-    enter_break();
 }
 
 void Program :: main_3()
 {
+    Timer clock; // timer
     Sortable_list SortList;
-    Record * record;
+    Record * record = nullptr;
     Random num;
     int in = 0, size = 0;
     int max_num = 0;
@@ -472,11 +447,10 @@ void Program :: main_3()
     SortList.insertion_sort();
     std::cout << "After Sorting: " << std::endl;
     print_list(SortList);
-    enter_break();
 }
 
 int main() {
-    if (system("CLS")) system("clear");
+    // if (system("CLS")) system("clear");
     switch(options())
     {
         case '1':
@@ -489,7 +463,7 @@ int main() {
             Program::main_3();
             break;
         default:
-            std::cout << "Wrong input.";
+            std::cout << "Wrong input.\n";
     }
     main();
 }
